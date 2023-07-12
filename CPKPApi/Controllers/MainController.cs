@@ -10,11 +10,14 @@ namespace CPKPApi.Controllers
     public class MainController : ControllerBase
     {
         private IBL _BL;
+        private readonly IConfiguration _configuration;
 
-        public MainController(IBL bL)
+        public MainController(IBL bL, IConfiguration configuration)
         {
             _BL = bL;
+            _configuration = configuration;
         }
+       
 
         [HttpGet("getPlayerStats/{p_playerid}")]
         public async Task<IActionResult> GetPlayerStats(int p_playerid)
@@ -38,7 +41,15 @@ namespace CPKPApi.Controllers
         {
             return Created("api/Main/createPlayer", await _BL.CreatePlayer(p_player));
         }
+        [HttpGet("testVal")]
+        public async Task<IActionResult> TestVal()
+        {
 
+            return Ok(_configuration.GetValue<string>("ConnectionStrings:CPKPDB"));
+        }
+
+
+        
 
 
     }
