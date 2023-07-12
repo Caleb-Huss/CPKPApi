@@ -41,7 +41,12 @@ namespace CPKPApi.Controllers
         {
             return Created("api/Main/createPlayer", await _BL.CreatePlayer(p_player));
         }
-        
+        [HttpGet("testVal")]
+        public async Task<IActionResult> TestVal(int pval)
+        {
+
+            return Ok(await _BL.TestVal(pval));
+        }
 
 
         

@@ -37,5 +37,7 @@ namespace CPKPBL
         /// <returns></returns>
         Task<PlayerDTO> UpdatePlayer(PlayerDTO p_player);
 
+        Task<int> TestVal(int p_val);
+
     }
 }
