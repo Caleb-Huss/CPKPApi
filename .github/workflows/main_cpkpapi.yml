@@ -27,6 +27,13 @@ jobs:
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      
+      - name: Replace connection string
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: '${{env.DOTNET_ROOT}}/myapp/appsettings.json'
+        env:
+          ConnectionStrings.CPKPDB: ${{ secrets.SQL_SERVER_CON_STRING }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
