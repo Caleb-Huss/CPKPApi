@@ -58,6 +58,10 @@ namespace CPKPDL
 
             return new PlayerDTO(await dbContext.Players.FirstAsync(p => p.Playerid == p_player.Playerid));
         }
+        public async Task<int> TestVal(int pval)
+        {
+            return pval + pval;
+        }
 
 
     }
