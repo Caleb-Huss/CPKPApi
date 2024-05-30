@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /CPKPApi/appsettings.Development.json
+/CPKPDL/Migrations
+/CPKPDL/Properties/ServiceDependencies/local
+/CPKPDL/Properties

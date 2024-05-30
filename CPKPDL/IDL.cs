@@ -37,6 +37,13 @@ namespace CPKPDL
         /// <returns></returns>
         Task<PlayerDTO> UpdatePlayer(PlayerDTO p_player);
 
+        /// <summary>
+        /// Get Playing info
+        /// </summary>
+        /// <param name="p_player"></param>
+        /// <returns>p_player</returns>
+        Task<PlayerDTO> GetPlayer(PlayerDTO p_player);
+
         Task<int> TestVal(int p_val);
 
 

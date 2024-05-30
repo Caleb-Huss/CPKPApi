@@ -34,10 +34,15 @@ namespace CPKPBL
         {
             return await _repo.UpdatePlayer(p_player);
         }
-
+        public async Task<PlayerDTO> GetPlayer(PlayerDTO p_player)
+        {
+            return await _repo.GetPlayer(p_player);
+        }
+            
         public async Task<int> TestVal(int pval)
         {
             return await _repo.TestVal(pval);
         }
     }
+        
 }
