@@ -45,6 +45,8 @@ app.UseSwaggerUI();*/
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
 app.UseCors(AllowedOrigins);
 
 app.UseAuthorization();
