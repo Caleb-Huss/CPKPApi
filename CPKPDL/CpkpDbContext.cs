@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using CPKPModels;
 
@@ -10,6 +11,7 @@ public partial class CpkpDbContext : DbContext
     public CpkpDbContext()
     {
     }
+
 
     public CpkpDbContext(DbContextOptions<CpkpDbContext> options)
         : base(options)

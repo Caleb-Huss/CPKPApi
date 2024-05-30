@@ -18,7 +18,7 @@ namespace CPKPApi.Controllers
             _configuration = configuration;
         }
        
-
+        // need a method for getting player profile
         [HttpGet("getPlayerStats/{p_playerid}")]
         public async Task<IActionResult> GetPlayerStats(int p_playerid)
         {
