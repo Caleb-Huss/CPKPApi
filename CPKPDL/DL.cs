@@ -44,7 +44,22 @@ namespace CPKPDL
             await dbContext.Players.AddAsync(newPlayer);
             await dbContext.SaveChangesAsync();
 
-            return new PlayerDTO(await dbContext.Players.FirstAsync(p => p.Email == p_player.Email));
+            PlayerDTO newestPlayer = new PlayerDTO(await dbContext.Players.FirstAsync(p => p.Email == p_player.Email));
+
+            Stat newStats = new Stat()
+            {
+                Playerid = newestPlayer.Playerid,
+                Correctguesses = 0,
+                Totalguesses = 0,
+                Shiniesseen = 0,
+                Higheststreak = 0,
+                Player = null
+            };
+
+            await dbContext.Stats.AddAsync(newStats);
+            await dbContext.SaveChangesAsync();
+
+            return newestPlayer;
         }
         public async Task<PlayerDTO> UpdatePlayer(PlayerDTO p_player)
         {
@@ -58,11 +73,23 @@ namespace CPKPDL
 
             return new PlayerDTO(await dbContext.Players.FirstAsync(p => p.Playerid == p_player.Playerid));
         }
+        public async Task<PlayerDTO> GetPlayer(PlayerDTO p_player)
+        {
+            Player player = await dbContext.Players.FirstAsync(p => p.Email == p_player.Email);
+
+            player.Lastlogin = DateTime.Now;
+
+            await dbContext.SaveChangesAsync();
+
+            return new PlayerDTO(await dbContext.Players.FirstAsync(s => s.Email == p_player.Email));
+        }
+
+
         public async Task<int> TestVal(int pval)
         {
             return pval + pval;
         }
 
-
+        
     }
 }

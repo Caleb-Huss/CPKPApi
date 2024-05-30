@@ -18,7 +18,6 @@ namespace CPKPApi.Controllers
             _configuration = configuration;
         }
        
-        // need a method for getting player profile
         [HttpGet("getPlayerStats/{p_playerid}")]
         public async Task<IActionResult> GetPlayerStats(int p_playerid)
         {
@@ -41,6 +40,13 @@ namespace CPKPApi.Controllers
         {
             return Created("api/Main/createPlayer", await _BL.CreatePlayer(p_player));
         }
+
+        [HttpPost("getPlayer")]
+        public async Task<IActionResult> GetPlayer([FromBody] PlayerDTO p_player)
+        {
+            return Created("api/Main/getPlayer",await _BL.GetPlayer(p_player));
+        }
+
         [HttpGet("testVal")]
         public async Task<IActionResult> TestVal(int pval)
         {
