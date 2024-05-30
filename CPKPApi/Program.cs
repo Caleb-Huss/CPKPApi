@@ -25,7 +25,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: AllowedOrigins,
         policy =>
         {
-            policy.WithOrigins("https://cpkp.calebhuss.com/");
+            policy.WithOrigins("https://cpkp.calebhuss.com");
         });
 }
 );
