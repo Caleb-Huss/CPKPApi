@@ -25,7 +25,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: AllowedOrigins,
         policy =>
         {
-            policy.WithOrigins("https://cpkp.calebhuss.com");
+            policy.WithOrigins("https://cpkp.calebhuss.com")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
         });
 }
 );
@@ -42,6 +44,8 @@ if (app.Environment.IsDevelopment())
 app.UseSwaggerUI();*/
 
 app.UseHttpsRedirection();
+
+app.UseCors(AllowedOrigins);
 
 app.UseAuthorization();
 
