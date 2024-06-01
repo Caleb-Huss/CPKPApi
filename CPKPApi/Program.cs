@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
-var AllowedOrigins = "_allowedOrigins";
+//var AllowedOrigins = "_allowedOrigins";
 
 // Add services to the container.
 
@@ -20,17 +20,16 @@ builder.Services.AddDbContext<CpkpDbContext>(options => options.UseSqlServer("na
 builder.Services.AddScoped<IDL, DL>();
 builder.Services.AddScoped<IBL, BL>();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: AllowedOrigins,
-        policy =>
-        {
-            policy.WithOrigins("https://cpkp.calebhuss.com", "http://localhost:4200")
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-        });
-}
-);
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(policy =>
+//        {
+//            policy.WithOrigins("https://cpkp.calebhuss.com", "http://localhost:4200", "https://*.calebhuss.com")
+//            .AllowAnyHeader()
+//            .AllowAnyMethod();
+//        });
+//}
+//);
 
 var app = builder.Build();
 
