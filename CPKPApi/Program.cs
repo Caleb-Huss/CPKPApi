@@ -30,6 +30,16 @@ builder.Services.AddScoped<IBL, BL>();
 //        });
 //}
 //);
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy((policy) =>
+    {
+        .policy.SetIsOriginAllowedToAllowWildcardSubdomains()
+        .WithOrigins("https://cpkp.calebhuss.com", "http://localhost:4200", "https://*.calebhuss.com")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
